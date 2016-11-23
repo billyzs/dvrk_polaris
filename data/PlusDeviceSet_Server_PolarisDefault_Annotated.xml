@@ -4,20 +4,30 @@
       Name="PlusServer: NDI Polaris tracker with passive markers" 
       Description="Broadcasting tool tracking data through OpenIGTLink
 For NDI Polaris passive marker" />
+      <!--
+          Use 9600 as baud rate. Other baud don't work
+      -->
     <Device
       Id="TrackerDevice"
       Type="PolarisTracker"
       SerialPort="1"
-      BaudRate="9600"
-      ToolReferenceFrame="Tracker" >
+      BaudRate="9600" 
+      ToolReferenceFrame="Tracker">
       <DataSources>
-        <DataSource Type="Tool" Id="Ref" RomFile="NDI/p3_1.rom" />
+        <!--
+          Each DataSource corresponds to a tool. Wired tools should be associated to a Port (Port="0", "1", etc.). Wireless tools should use RomFile instead of Port. 
+          Path to the RomFile is relative to this script. So in this case the folder that contains this file has a folder named NDI which contains the RomFiles
+        -->
+        <DataSource Type="Tool" Id="Ref" RomFile="NDI/p3_1.rom" /> 
 	      <DataSource Type="Tool" Id="Tool1" RomFile="NDI/p1_2.rom" />
 	      <DataSource Type="Tool" Id="Tool2" RomFile="NDI/p2_3.rom" />
 	      <DataSource Type="Tool" Id="Tool4" RomFile="NDI/p4_1.rom" />
       </DataSources>
       <OutputChannels>
         <OutputChannel Id="TrackerStream" >
+        <!--
+          Select the tools you want to associate with this stream
+        -->
           <DataSource Id="Tool1"/>
           <DataSource Id="Tool2"/>
           <DataSource Id="Tool4"/>
@@ -45,7 +55,10 @@ For NDI Polaris passive marker" />
       <MessageTypes> 
         <Message Type="TRANSFORM" />
       </MessageTypes>
-      <TransformNames> 
+      <TransformNames>
+        <!--
+          List all the transforms you want to publish here. Format: "ToolID" + "To" + "ToolID"
+        -->
         <Transform Name="Tool1ToRef" />
         <Transform Name="Tool2ToRef" />
         <Transform Name="Tool4ToRef" />
