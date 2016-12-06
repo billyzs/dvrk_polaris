@@ -2,8 +2,7 @@
   <DataCollection StartupDelaySec="1.0" >
     <DeviceSet 
       Name="PlusServer: NDI Polaris tracker with passive markers" 
-      Description="Broadcasting tool tracking data through OpenIGTLink
-For NDI Polaris passive marker" />
+      Description="Sample confiugration" />
       <!--
           Use 9600 as baud rate. Other baud don't work
       -->

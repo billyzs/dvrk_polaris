@@ -1,26 +1,21 @@
 <PlusConfiguration version="2.1">
   <DataCollection StartupDelaySec="1.0" >
     <DeviceSet 
-      Name="PlusServer: NDI Polaris tracker with passive markers" 
-      Description="Broadcasting tool tracking data through OpenIGTLink
-For NDI Polaris passive marker" />
+      Name="Temp solution" 
+      Description="Temporary solution" />
     <Device
       Id="TrackerDevice"
       Type="PolarisTracker"
       SerialPort="3"
-      BaudRate="115200"
+      BaudRate="9600"
       ToolReferenceFrame="Tracker" >
       <DataSources>
-        <DataSource Type="Tool" Id="Ref" RomFile="NDI/p3_1.rom" />
+        <DataSource Type="Tool" Id="Ref" RomFile="NDI/p2_3.rom" />
 	      <DataSource Type="Tool" Id="Tool1" RomFile="NDI/p1_2.rom" />
-	      <DataSource Type="Tool" Id="Tool2" RomFile="NDI/p2_3.rom" />
-	      <DataSource Type="Tool" Id="Tool4" RomFile="NDI/p4_1.rom" />
       </DataSources>
       <OutputChannels>
         <OutputChannel Id="TrackerStream" >
           <DataSource Id="Tool1"/>
-          <DataSource Id="Tool2"/>
-          <DataSource Id="Tool4"/>
           <DataSource Id="Ref"/>
         </OutputChannel>
       </OutputChannels>
@@ -47,8 +42,6 @@ For NDI Polaris passive marker" />
       </MessageTypes>
       <TransformNames> 
         <Transform Name="Tool1ToRef" />
-        <Transform Name="Tool2ToRef" />
-        <Transform Name="Tool4ToRef" />
       </TransformNames>
     </DefaultClientInfo>
   </PlusOpenIGTLinkServer>
